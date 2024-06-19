@@ -85,7 +85,7 @@ namespace ImageDataCleaner
                     //string directory = Path.GetDirectoryName(path);
                     //string directory = path;
                     string prefixedFileName = $"{prefix}{Path.GetFileName(fileName)}";
-                    imgCopy.Save(Path.Combine(path, prefixedFileName), ImageFormat.Png);
+                    imgCopy.Save(Path.Combine(path, prefixedFileName), ImageFormat.Jpeg);
                 }
             }
         }
