@@ -1,0 +1,34 @@
+﻿<Window x:Class="ImageDataCleaner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageDataCleaner"
+        mc:Ignorable="d"
+        Title="ImageMetaDataCleaner" Height="450" Width="400" MaxHeight="450" MaxWidth="400" MinHeight="450" MinWidth="400">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="b2v" />
+    </Window.Resources>
+    <StackPanel HorizontalAlignment="Center">
+        <Separator Opacity="0" Height="20"/>
+        <Label Content="Files:" FontSize="16"/>
+        <DockPanel>
+            <TextBox Width="280" HorizontalAlignment="Center" FontSize="16" Name="filesText"></TextBox>
+            <Button Content="Select files" FontSize="16" Click="selectFiles"/>
+        </DockPanel>
+        <Separator Opacity="0" Height="5"/>
+        <CheckBox Content="Copy to new directory" FontSize="16" Name="checkCopy"></CheckBox>
+        <Separator Opacity="0" Height="20"/>
+        <Label Content="Destination folder:" FontSize="16" 
+        Visibility="{Binding IsChecked,ElementName=checkCopy,Converter={StaticResource b2v}}"></Label>
+        <DockPanel Visibility="{Binding IsChecked,ElementName=checkCopy,Converter={StaticResource b2v}}">
+            <TextBox Width="280" HorizontalAlignment="Center" FontSize="16" Name="folderText"></TextBox>
+            <Button Content="Select folder" FontSize="16" Click="selectFolder"/>
+        </DockPanel>
+        <Separator Opacity="0" Height="20"/>
+        <Label Content="File prefix:" FontSize="16"></Label>
+        <TextBox Width="280" FontSize="16" HorizontalAlignment="Center" Name="prefixText" />
+        <Separator Opacity="0" Height="20"/>
+        <Button Content="Delete Metadata" Padding="5" FontSize="16" Margin="10" HorizontalAlignment="Center" Click="cleanData"/>
+    </StackPanel>
+</Window>
